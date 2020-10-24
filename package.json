@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "slackbot that congrats you when pushing commit",
   "main": "index.js",
-  "author": "Bopzor <violaine.ballandin@gmail.com>",
+  "author": "Bopzor",
   "license": "Beerware",
   "scripts": {
     "start": "nodemon",
     "build": "tsc",
     "prod": "node ./build/index.js",
     "docker:build": "docker build . -t congrabot",
-    "docker:run": "docker run -dt --name congrabot-container congrabot"
+    "docker:run": "docker run -dt --name congrabot-container -p 3071:8080 congrabot"
   },
   "engines": {
     "node": "12.x"
