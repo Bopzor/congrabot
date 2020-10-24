@@ -1,0 +1,35 @@
+{
+  "name": "congrabot",
+  "version": "1.0.0",
+  "description": "slackbot that congrats you when pushing commit",
+  "main": "index.js",
+  "author": "Bopzor <violaine.ballandin@gmail.com>",
+  "license": "Beerware",
+  "scripts": {
+    "start": "nodemon",
+    "build": "tsc",
+    "prod": "node ./build/index.js",
+    "docker:build": "docker build . -t congrabot",
+    "docker:run": "docker run -dt --name congrabot-container congrabot"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "dependencies": {
+    "@slack/events-api": "^2.3.4",
+    "@slack/web-api": "^5.13.0",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "12.7.0",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
+    "eslint": "^7.12.0",
+    "eslint-config-prettier": "^6.14.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.1.2",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  }
+}

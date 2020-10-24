@@ -1,0 +1,9 @@
+node_modules
+
+yarn-error.log
+
+build
+.env
+
+# folder that should contains `bots.json`, `users.json` and `phrases.json` files
+data
