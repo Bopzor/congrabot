@@ -10,7 +10,7 @@
     "build": "tsc",
     "prod": "node ./build/index.js",
     "docker:build": "docker build . -t congrabot",
-    "docker:run": "docker run -dt --name congrabot-container -p 3071:8080 congrabot"
+    "docker:run": "docker run -dt --name congrabot-container -e SLACK_BOT_TOKEN -e SLACK_SIGNING_SECRET -p 3071:8080 congrabot"
   },
   "engines": {
     "node": "12.x"
