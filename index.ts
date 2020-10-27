@@ -25,7 +25,7 @@ slackEvents.on('message', async (event) => {
     }
 
     const username = subArray.slice(0, idx).join(' ');
-    const user = (<Record<string, string>>users)[username];
+    const user = (<Record<string, string>>users)[username.trim()];
 
     if (!user) {
       return;
