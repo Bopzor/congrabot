@@ -79,7 +79,7 @@ const isDailyTime = (): boolean => {
   const date = new Date();
   const day = date.getDay();
 
-  if (day < 2) {
+  if (day === 0 || day == 6) {
     return false;
   }
 
