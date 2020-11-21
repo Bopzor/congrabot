@@ -13,4 +13,5 @@ COPY . /opt/app
 
 RUN yarn build
 
+EXPOSE 8080
 CMD ["yarn", "prod"]

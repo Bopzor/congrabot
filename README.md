@@ -42,3 +42,20 @@ An object that maps gitlab user full name and its corresponding slack user id.
   "toto": "U0G9QF9C6"
 }
 ```
+
+## Make congrabot remind you of daily time and give you the order of passage of each team members
+
+Set environement variable `REMIND_ME_DAILY` to `true` to enable the feature.
+
+You will need those environement variable:
+
+```sh
+# enable the feature
+REMIND_ME_DAILY=true
+
+# the time at wich you want to me reminded ('HH:MM:SS' format)
+DAILY_TIME=09:43:00
+
+# slack channel to post the message
+DAILY_CHANNEL=
+```
