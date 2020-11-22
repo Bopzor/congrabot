@@ -7,3 +7,5 @@ build
 
 # folder that should contains `bots.json`, `users.json` and `phrases.json` files
 data
+
+logs
