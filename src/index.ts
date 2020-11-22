@@ -4,7 +4,7 @@ import { AddressInfo } from 'net';
 
 import { congrat } from './congrat';
 import { handleDaily, getAllUsers, activeUsers } from './daily';
-import { SlackUser } from '../types';
+import { SlackUser } from './types';
 
 const slackEvents = createEventAdapter(process.env.SLACK_SIGNING_SECRET || '');
 const web = new WebClient(process.env.SLACK_BOT_TOKEN);
@@ -19,7 +19,7 @@ const port = parseInt(process.env.PORT || '3000');
   congrat(web, slackEvents);
 
   if (process.env.REMIND_ME_DAILY) {
-    const users = await getAllUsers();
+    const users = await getAllUsers(web);
 
     setInterval(() => {
       handleDaily(web, activeUsers(users as SlackUser[]));

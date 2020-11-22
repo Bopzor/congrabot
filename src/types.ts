@@ -42,3 +42,12 @@ export type SlackUser = {
   is_app_user?: boolean;
   updated?: number;
 };
+
+export type ActiveUser = {
+  id: string;
+  realName: string;
+  displayName: string;
+  image: string;
+  deleted: boolean;
+  isBot: boolean;
+};
