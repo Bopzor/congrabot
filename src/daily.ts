@@ -88,7 +88,7 @@ const sendDailyOrder = async (web: WebClient, users: ActiveUser[]): Promise<void
       channel: process.env.DAILY_CHANNEL || '',
       text: ":loudspeaker: Today's daily order! :loudspeaker:",
       blocks,
-      link_names: false,
+      link_names: true,
     });
   } catch (error) {
     console.log('daily > sendDailyOrder()', error);
