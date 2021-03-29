@@ -3,6 +3,36 @@
 `congrabot` will watch for messages comming from specified slackbots listed in `bots.json` file.  
 If it's a notification for a push action, it will reply, mentionning the corresponding user, with a random phrase from `phrases.json`.
 
+## Environment variables
+
+> check `env.template` as example.
+
+### Required
+
+`SLACK_BOT_TOKEN`: Bot User OAuth Access Token from slack  
+`SLACK_SIGNING_SECRET`: Signing Secret from slack
+
+### Congrats feature
+
+`CONGRATS`: boolean. Set to true will enable the feature
+
+### Remind me daily feature
+
+`REMIND_ME_DAILY`: boolean. Set to true will enable the feature  
+`DAILY_TIME`: time at which you want to be reminded. `HH:MM:SS` format. Use `utc` / server timezone  
+`DAILY_CHANNEL`: slack channel id to post reminder  
+`COMBOS`: boolean. Set to true will enable combos use. Be aware that if you enable this, you will need to provide a `data/combos.json` file which contains all awailable combos in the folowing format:
+
+```json
+[
+  ['<slack_userId_1>', '<slack_userId_2>'],
+  ['<slack_userId_2>', '<slack_userId_1>'],
+  ...
+]
+```
+
+`CONGRATS`: boolean. Set to true will enable the feature
+
 ## Needed files
 
 Create a `data` folder that will contains the folowing files:
@@ -42,6 +72,8 @@ An object that maps gitlab user full name and its corresponding slack user id.
   "toto": "U0G9QF9C6"
 }
 ```
+
+---
 
 ## Make congrabot remind you of daily time and give you the order of passage of each team members
 

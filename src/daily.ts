@@ -1,7 +1,7 @@
 import { DividerBlock, HeaderBlock, SectionBlock, WebClient } from '@slack/web-api';
 
 import { ActiveUser, SlackUser } from './types';
-import { shuffle, parseDailyTime, victoryEmoji } from './utils';
+import { shuffle, parseDailyTime, victoryEmoji, getRandomIdx, springEmoji } from './utils';
 
 const parseActiveUser = (member: SlackUser): ActiveUser => ({
   id: member.id as string,
@@ -61,10 +61,16 @@ const headerBlock: HeaderBlock = {
 
 const place = (position: number) => {
   const star = ':star:';
-  let p = star;
+  const spring = shuffle(springEmoji)[getRandomIdx(springEmoji.length)];
+  let emoji = process.env.SPRING_EMOJIS ? spring : star;
+
+  let p = emoji;
 
   for (let i = 5; i > position; i--) {
-    p += star;
+    if (process.env.SPRING_EMOJIS) {
+      emoji = shuffle(springEmoji)[getRandomIdx(springEmoji.length)];
+    }
+    p += emoji;
   }
 
   return p;
@@ -126,10 +132,25 @@ const isDailyTime = (): boolean => {
   return false;
 };
 
-export const handleDaily = async (web: WebClient, users: ActiveUser[]): Promise<void> => {
-  const shuffledUsers = shuffle(users);
-
+export const handleDaily = async (web: WebClient, users: ActiveUser[], combos?: string[][]): Promise<number | void> => {
   if (isDailyTime()) {
+    let shuffledUsers;
+    let comboIdx;
+
+    if (combos) {
+      const shuffledCombos = shuffle(combos);
+      comboIdx = getRandomIdx(combos.length);
+      shuffledUsers = shuffledCombos[comboIdx].map((id) => {
+        const idx = users.findIndex((u) => u.id === id);
+
+        return users[idx];
+      });
+    } else {
+      shuffledUsers = shuffle(users);
+    }
+
     await sendDailyOrder(web, shuffledUsers);
+
+    return await comboIdx;
   }
 };

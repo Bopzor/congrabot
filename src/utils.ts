@@ -17,3 +17,12 @@ export const victoryEmoji: Record<number, string> = {
   4: ':raised_hand_with_fingers_splayed:',
   5: ':tada:',
 };
+
+export const springEmoji: string[] = [
+  ':rose:',
+  ':cherry_blossom:',
+  ':tulip:',
+  ':hibiscus:',
+  ':sunflower:',
+  ':four_leaf_clover:',
+];
